@@ -40,20 +40,20 @@ function getWinner(playerMove,computerMove) {
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-    if(playerMove === computerMove) {
-        winner = "tie";
-    } else if(playerMove === "scissors" && computerMove === "paper") {
-        winner = "player";
-    } else if(playerMove === "scissors" && computerMove === "rock") {
-        winner = "computer";
-    } else if(playerMove === "paper" && computerMove === "scissors") {
-        winner = "computer";
-    } else if(playerMove === "paper" && computerMove === "rock") {
-        winner = "player";
-    } else if(playerMove === "rock" && computerMove === "paper") {
-        winner = "computer";
-    } else
-        winner = "error";
+    if (playerMove === 'rock' && computerMove === 'paper') {
+        winner = 'computer';
+    } else if (playerMove === 'rock' && computerMove === 'scissors') {
+        winner = 'player';
+    } else if (computerMove === 'rock' && playerMove === 'paper') {
+        winner = 'player';
+    } else if (computerMove === 'rock' && playerMove === 'scissors') {
+        winner = 'computer';
+    } else if (computerMove === 'paper' && playerMove === 'scissors') {
+        winner = 'player';
+    } else if (computerMove === 'scissors' && playerMove === 'paper') {
+        winner = 'player';
+    } else {
+        winner = 'tie';
     }
 
     return winner;
@@ -64,7 +64,24 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
+     while (playerWins < 5 && computerWins < 5) {
+        var playerMove = getPlayerMove(randomPlay());
+        var computerMove = getComputerMove();
+        var winner = getWinner(playerMove, computerMove);
+        if (winner === 'player') {
+            playerWins ++;
+            console.log("Player played " + playerMove + " while computer played " + computerMove);
+            console.log("Player won this round.");
+        } else if (winner === 'computer') {
+            computerWins ++;
+            console.log("Player played " + playerMove + " while computer played " + computerMove);
+            console.log("Computer has won this round.");
+        } else {
+            console.log("Player played " + playerMove + " while computer played " + computerMove);
+            console.log("Player and computer have tied.");
+        }
+    }
     return [playerWins, computerWins];
 }
 
+playToFive();
