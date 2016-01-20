@@ -58,14 +58,14 @@ function playToFive() {
         var playerMove = getPlayerMove(randomPlay());
         var computerMove = getComputerMove();
         var winner = getWinner(playerMove, computerMove);
-        if (winner === 'player') {
+        if (winner === 'computer') {
             playerWins ++;
             console.log("Player chose " + playerMove + " while Computer chose " + computerMove);
-            console.log("Player Wins!");
-        } else if (winner === 'computer') {
+            console.log("Computer Wins!");
+        } else if (winner === 'player') {
             computerWins ++;
             console.log("Player chose " + playerMove + " while Computer chose " + computerMove);
-            console.log("Computer Wins!");
+            console.log("Player Wins!");
         } else {
             console.log("Player chose " + playerMove + " while Computer chose " + computerMove);
             console.log("TIE");
